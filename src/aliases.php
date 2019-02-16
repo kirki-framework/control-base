@@ -8,4 +8,10 @@
  * @since      4.0
  */
 
-class_alias( 'Kirki\Control\Base', 'Kirki_Control_Base' );
+add_action(
+    'customize_register',
+    function() {
+        class_alias( 'Kirki\Control\Base', 'Kirki_Control_Base' );
+    },
+    0
+);
