@@ -112,6 +112,23 @@ class Base extends \WP_Customize_Control {
 		wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
 		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', array(), KIRKI_VERSION );
 
+		$url = apply_filters(
+			'kirki_package_url_control_base',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-base/src'
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-dynamic-control',
+			"$url/assets/scripts/dynamic-control.js",
+			[
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
 		// Enqueue the script.
 		wp_enqueue_script(
 			'kirki-script',
