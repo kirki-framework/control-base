@@ -119,11 +119,24 @@ class Base extends \WP_Customize_Control {
 
 		// Enqueue the script.
 		wp_enqueue_script(
+			'kirki-setting',
+			"$url/assets/scripts/kirki.setting.js",
+			[
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
 			'kirki-dynamic-control',
 			"$url/assets/scripts/dynamic-control.js",
 			[
 				'jquery',
 				'customize-base',
+				'kirki-setting',
 			],
 			KIRKI_VERSION,
 			false
