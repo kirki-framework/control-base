@@ -96,10 +96,6 @@ class Base extends \WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		// Build the suffix for the script.
-		$suffix  = '';
-		$suffix .= ( ! defined( 'SCRIPT_DEBUG' ) || true !== SCRIPT_DEBUG ) ? '.min' : '';
-
 		// The Kirki plugin URL.
 		$kirki_url = trailingslashit( Kirki::$url );
 
@@ -131,16 +127,6 @@ class Base extends \WP_Customize_Control {
 			],
 			KIRKI_VERSION,
 			false
-		);
-
-		$suffix = str_replace( '.min', '', $suffix );
-
-		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-styles',
-			"{$kirki_url}controls/css/styles{$suffix}.css",
-			array(),
-			KIRKI_VERSION
 		);
 	}
 
