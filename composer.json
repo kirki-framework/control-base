@@ -18,7 +18,7 @@
     },
     "autoload": {
 		"psr-4": {
-			"Kirki\\Control\\": "src/"
+			"Kirki\\Control\\": "src/Control"
         },
         "files": ["src/aliases.php"]
     }
