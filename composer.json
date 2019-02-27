@@ -20,6 +20,6 @@
 		"psr-4": {
 			"Kirki\\Control\\": "src/Control"
         },
-        "files": ["src/aliases.php"]
+        "files": ["src/functions.php"]
     }
 }
