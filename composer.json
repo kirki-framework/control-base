@@ -19,6 +19,6 @@
     "autoload": {
 		"psr-4": {
 			"Kirki\\Control\\": "src/Control"
-        },
+        }
     }
 }
