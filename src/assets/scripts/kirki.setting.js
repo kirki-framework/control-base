@@ -88,7 +88,7 @@ kirki = jQuery.extend( kirki, {
 			}
 
 			if ( 'undefined' !== typeof wp.customize.settings.settings.setting ) {
-				wp.customize.control( setting ).setting.set( value );
+				wp.hooks.doAction( 'kirki.settingSet', setting, value );
 				return;
 			}
 
@@ -147,7 +147,26 @@ kirki = jQuery.extend( kirki, {
 					value = currentVal;
 				}
 			}
-			wp.customize.control( foundNode ).setting.set( value );
+			wp.hooks.doAction( 'kirki.settingSet', foundNode, value );
 		}
 	}
 } );
+
+/**
+ * Adds a hook to trigger the value saving.
+ *
+ * @since 4.0
+ */
+wp.hooks.addAction(
+	'kirki.settingSet',
+	'kirki',
+	/**
+	 * 
+	 * @param {string} setting - The setting we want to save.
+	 * @param {mixed} value - The value.
+	 * @returns {void}
+	 */
+	function( setting, value ) {
+		wp.customize.control( setting ).setting.set( value );
+	}
+);
