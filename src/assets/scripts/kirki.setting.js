@@ -87,6 +87,8 @@ kirki = jQuery.extend( kirki, {
 				}
 			}
 
+			wp.hooks.doAction( 'kirki.settingSet.before', setting, value );
+
 			if ( 'undefined' !== typeof wp.customize.settings.settings.setting ) {
 				wp.hooks.doAction( 'kirki.settingSet', setting, value );
 				return;
