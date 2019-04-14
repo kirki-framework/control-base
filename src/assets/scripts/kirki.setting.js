@@ -87,7 +87,7 @@ kirki = jQuery.extend( kirki, {
 				}
 			}
 
-			if ( 'undefined' !== typeof wp.customize.control( setting ) ) {
+			if ( 'undefined' !== typeof wp.customize.settings.settings.setting ) {
 				wp.customize.control( setting ).setting.set( value );
 				return;
 			}
