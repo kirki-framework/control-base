@@ -26,11 +26,14 @@
 			if ( ! args.params.type ) {
 				args.params.type = 'kirki-generic';
 			}
-			if ( ! args.params.content ) {
-				args.params.content = jQuery( '<li></li>' );
-				args.params.content.attr( 'id', 'customize-control-' + id.replace( /]/g, '' ).replace( /\[/g, '-' ) );
-				args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
-			}
+
+			// Hijack the container to add wrapper_atts.
+			args.params.content = jQuery( '<li></li>' );
+			args.params.content.attr( 'id', 'customize-control-' + id.replace( /]/g, '' ).replace( /\[/g, '-' ) );
+			args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
+			_.each( args.params.wrapper_atts, function( val, key ) {
+				args.params.content.attr( key, val );
+			});
 
 			control.propertyElements = [];
 			wp.customize.Control.prototype.initialize.call( control, id, args );
