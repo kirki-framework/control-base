@@ -233,7 +233,6 @@
 			newVal        = {};
 			newVal[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ] = to;
 			api.control( parentSetting ).setting.set( jQuery.extend( {}, api.control( parentSetting ).setting._value, newVal ) );
-			return;
 		}
 		/**
 		 * End Kirki mod.
@@ -245,5 +244,24 @@
 		this.callbacks.fireWith( this, [ to, from ] );
 
 		return this;
+	};
+
+	/**
+	 * Get the value.
+	 *
+	 * @return {mixed}
+	 */
+	api.Value.prototype.get = function() {
+		/**
+		 * Start Kirki mod.
+		 */
+		if ( this.id && api.control( this.id ) && api.control( this.id ).params && api.control( this.id ).params.parent_setting ) {
+			parentSetting = api.control( this.id ).params.parent_setting;
+			return api.control( parentSetting ).setting.get()[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ];
+		}
+		/**
+		 * End Kirki mod.
+		 */
+		return this._value;
 	};
 } )( wp.customize );
