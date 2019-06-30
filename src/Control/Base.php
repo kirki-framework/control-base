@@ -156,9 +156,6 @@ class Base extends \WP_Customize_Control {
 			$this->json['default'] = $this->default;
 		}
 
-		// Required.
-		$this->json['required'] = $this->required;
-
 		// Output.
 		$this->json['output'] = $this->output;
 
